@@ -11,7 +11,7 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="{% static 'todoapp/bs/css/flaty.min.css' %}" />
-		<link rel="stylesheet" href="{% static 'todoapp/styles.css' %}" />		
+		<link rel="stylesheet" href="{% static 'todoapp/styles.css' %}" />
 	</head>
 	<body>
 
@@ -51,9 +51,15 @@
 					</div>
 
 					<ul class="list-group t20">
-						<li class="list-group-item">Learn something new.</li>
-						<li class="list-group-item todo-completed">Buy a new journal</li>
-						<li class="list-group-item">Book a dentist appointment.</li>
+						{% for todoapp in todo_items %}
+						   {% if todoapp.completed %}
+						   <li class="list-group-item todo-completed">{{todoapp.text}}</li>
+							 {% else %}
+							 <a href="#"><li class="list-group-item ">{{todoapp.text}}</li></a>
+							 {% endif %}
+						   {% endfor %}
+							 
+
 					</ul>
 				</div>
 			</div>
